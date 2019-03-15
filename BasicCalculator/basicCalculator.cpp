@@ -28,7 +28,7 @@ void calcotrice()
     char s;
     cout << "Enter an integer: ";
     cin >> dx;
-    cout << "Enter an arithmetic operator (+, -, *, /): ";
+    cout << "Enter an arithmetic operator (+, -, *, /, ^): ";
     cin >> s;
     cout << "Enter another integer: ";
     cin >> dy;

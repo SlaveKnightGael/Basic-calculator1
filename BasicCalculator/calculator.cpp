@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 #include "calculator.h"
 
 using std::cout;
@@ -41,6 +42,8 @@ Calculator Calculator::operator*(const Calculator & c) const
 Calculator Calculator::operator/(const Calculator & c) const
 {
     Calculator quotient;
+    if (c.num2 == 0)
+        throw std::runtime_error("Division by 0 is undefined.");
     quotient.num = c.num / c.num2;
     return quotient;
 }
@@ -70,7 +73,30 @@ std::ostream & operator<<(std::ostream & os, const Calculator & c)
     }
     else if (c.sign == '/')
     {
-        os << "Answer: " << c.num / c.num2 << " By Terrance Garrett\n";
+        try 
+        {
+            if (c.num2 == 0)
+                throw std::runtime_error("Division by 0 is undefined.");
+            else if (c.num2 != 0)
+            {
+                os << "Answer: " << c.num / c.num2 << " By Terrance Garrett\n";
+                return os;
+            }
+        } catch (std::runtime_error err)
+        {
+            std::cout << err.what() << "\nTry another integer." << std::endl;
+        }
+    }
+    else if (c.sign == '^')
+    {
+        double pow;
+        pow = c.num;
+        if (c.num2 == 0)
+            pow = 1;
+        else if (c.num2 > 1)
+            for (int i = 0; i < c.num2 - 1; i++)
+                pow *= c.num;
+        os << "Answer: " << pow << " By Terrance Garrett\n";
         return os;
     }
 }

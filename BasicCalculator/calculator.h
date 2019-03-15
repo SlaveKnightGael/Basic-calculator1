@@ -16,7 +16,6 @@ public:
     Calculator operator-(const Calculator & c) const;
     Calculator operator*(const Calculator & c) const;
     Calculator operator/(const Calculator & c) const;
-   // friend std::istream & operator>>(std::istream & is, const Calculator & c);
     friend std::ostream & operator<<(std::ostream & os, const Calculator & c);
 };
 
