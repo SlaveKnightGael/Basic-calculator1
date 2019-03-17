@@ -28,12 +28,22 @@ void calcotrice()
     char s;
     cout << "Enter an integer: ";
     cin >> dx;
-    cout << "Enter an arithmetic operator (+, -, *, /, ^): ";
+    cout << "Enter an arithmetic operator (+, -, *, /, ^, !): ";
     cin >> s;
-    cout << "Enter another integer: ";
-    cin >> dy;
-    Calculator arthmCalc(dx, s, dy);
-    Calculator result;
-    result = arthmCalc;
-    cout << result;
+    if (s == '!')
+    {
+        Calculator factCalc(dx, s);
+        Calculator result;
+        result = factCalc;
+        cout << result;
+    }
+    else
+    {
+        cout << "Enter another integer: ";
+        cin >> dy;
+        Calculator arthmCalc(dx, s, dy);
+        Calculator result;
+        result = arthmCalc;
+        cout << result;
+    }
 }
