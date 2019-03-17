@@ -96,6 +96,9 @@ std::ostream & operator<<(std::ostream & os, const Calculator & c)
         else if (c.num2 > 1)
             for (int i = 0; i < c.num2 - 1; i++)
                 pow *= c.num;
+        else if (c.num2 <= -1.0)
+            for (double i = 0.0; i > c.num2; i--)
+                pow *= 1 / c.num;
         os << "Answer: " << pow << " By Terrance Garrett\n";
         return os;
     }
